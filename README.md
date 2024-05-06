@@ -1,5 +1,9 @@
 ## net-cat
 
+### Authors:
+
+Arshat Aitkozha (@araitkozha), Ilyas Telman (@itelman).
+
 ### Objectives
 
 This project consists on recreating the **NetCat in a Server-Client Architecture** that can run in a server mode on a specified port listening for incoming connections, and it can be used in client mode, trying to connect to a specified port and transmitting information to the server.
@@ -8,34 +12,32 @@ This project consists on recreating the **NetCat in a Server-Client Architecture
 
 - To see more information about NetCat inspect the manual `man nc`.
 
-Your project must work in a similar way that the original  NetCat works, in other words, you must create a group chat. The project must have the following features :
+This project works in a similar way that the original NetCat works, in other words, it is a group chat. The project has the following features:
 
 - TCP connection between server and multiple clients (relation of 1 to many).
 - A name requirement to the client.
 - Control connections quantity.
-- Clients must be able to send messages to the chat.
-- Do not broadcast EMPTY messages from a client.
-- Messages sent, must be identified by the time that was sent and the user name of who sent the message, example : `[2020-01-20 15:48:41][client.name]:[client.message]`
-- If a Client joins the chat, all the previous messages sent to the chat must be uploaded to the new Client.
-- If a Client connects to the server, the rest of the Clients must be informed by the server that the Client joined the group.
-- If a Client exits the chat, the rest of the Clients must be informed by the server that the Client left.
-- All Clients must receive the messages sent by other Clients.
-- If a Client leaves the chat, the rest of the Clients must not disconnect.
-- If there is no port specified, then set as default the port 8989. Otherwise, program must respond with usage message: `[USAGE]: ./TCPChat $port`
+- Clients are able to send messages to the chat.
+- EMPTY messages from a client are not broadcasted.
+- Messages sent, are identified by the time that was sent and the user name of who sent the message, example : `[2020-01-20 15:48:41][client.name]:[client.message]`
+- If a Client joins the chat, all the previous messages sent to the chat are uploaded to the new Client.
+- If a Client connects to the server, the rest of the Clients are informed by the server that the Client joined the group.
+- If a Client exits the chat, the rest of the Clients are informed by the server that the Client left.
+- All Clients receive the messages sent by other Clients.
+- If a Client leaves the chat, the rest of the Clients will not disconnect.
+- If there is no port specified, then the default port is set as 8989. Otherwise, program responds with usage message: `[USAGE]: ./TCPChat $port`
 
-### Instructions
+### Additional Information
 
-- Your project must be written in **Go**
-- Start TCP server, listen and accept connections
-- Your project must have Go-routines
-- Your project must have channels or Mutexes
-- Maximum 10 connections
-- The code must respect the [**good practices**](../good-practices/README.md)
-- It is recommended to have **test files** for [unit testing](https://go.dev/doc/tutorial/add-a-test) both the server connection and the client.
+- The project is written in **Go**
+- TCP server is started to listen and accept connections
+- The project has Go-routines
+- The project has channels or Mutexes
+- Maximum 10 connections are supported
+- The code respects the [**good practices**](../good-practices/README.md)
+- Errors from server side and client side are handled
 
-- You have to be able to handle the errors from server side and client side
-
-### Allowed Packages
+### Packages Used:
 
 - io
 - log
@@ -49,7 +51,7 @@ Your project must work in a similar way that the original  NetCat works, in othe
 - strings
 - reflect
 
-### Usage
+### Usage: how to run
 
 ```console
 $ go run cmd/main.go
@@ -61,7 +63,7 @@ $ go run cmd/main.go 2525 localhost
 $
 ```
 
-- You should answer the client with a linux logo and ask for their name, when connection is received
+- The client is answered with a linux logo and prompted for their name, when connection is received
 
 ```console
 $ nc $IP $port
